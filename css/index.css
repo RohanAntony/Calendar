@@ -1,9 +1,9 @@
 html, body{
-  border: 1px solid black;
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
+  font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
 }
 
@@ -13,50 +13,9 @@ html, body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* grid-template-columns: 1fr 100px 100px 100px 100px 100px 100px 100px 1fr;
-  grid-template-rows: 1fr 150px 100px 100px 100px 100px 100px 1fr; */
   display: flex;
   flex-direction: column;
 }
-
-/* .day-header{
-  text-align: center;
-}
-
-.sun{
-  grid-row: 2/3;
-  grid-column: 2/3;
-}
-
-.mon{
-  grid-row: 2/3;
-  grid-column: 3/4;
-}
-
-.tue{
-  grid-row: 2/3;
-  grid-column: 4/5;
-}
-
-.wed{
-  grid-row: 2/3;
-  grid-column: 5/6;
-}
-
-.thu{
-  grid-row: 2/3;
-  grid-column: 6/7;
-}
-
-.fri{
-  grid-row: 2/3;
-  grid-column: 7/8;
-}
-
-.sat{
-  grid-row: 2/3;
-  grid-column: 8/9;
-} */
 
 .row-space{
   flex-grow: 1;
@@ -80,7 +39,7 @@ html, body{
   box-sizing: border-box;
   width: 100%;
   border-collapse: collapse;
-  table-layout: auto;
+  table-layout: fixed;
 }
 
 .date {
@@ -99,15 +58,33 @@ html, body{
   height: 50px;
 }
 
+.cal-header button{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 45%;
+  background-color: #E9FFFF;
+  border: 1px solid #E9FFFF;
+}
+
 .calendar-table tr:nth-child(1){
-  background-color: #ccc;
+  background-color: #E9FFFF;
   border-bottom: 1px solid #fff;
 }
 
 .calendar-table tr:nth-child(2){
-  background-color: #ccc;
+  background-color: #B0FFFF;
 }
 
-.calendar-table tr:nth-child(2n + 3){
-  background-color: #eee;
+.calendar-table tr:nth-child(2n + 4){
+  background-color: #D2FFFF;
+}
+
+.sun, .sat{
+  color: #FF4500;
+}
+
+.today{
+  background-color: #0FF;
 }
