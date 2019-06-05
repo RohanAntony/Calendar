@@ -1,0 +1,22 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "description": "Calendar application written on React component module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RohanAntony/Calendar.git"
+  },
+  "keywords": [
+    "Calendar"
+  ],
+  "author": "Rohan Antony",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RohanAntony/Calendar/issues"
+  },
+  "homepage": "https://github.com/RohanAntony/Calendar#readme"
+}
