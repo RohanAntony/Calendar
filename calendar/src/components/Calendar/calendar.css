@@ -1,0 +1,14 @@
+table{
+	border: 1px solid white;
+}
+
+td, th{
+	box-sizing: content-box;
+	padding: 1rem;
+	border: 1px solid white;
+}
+
+th:first-child,
+td:first-child{
+	color: red;
+}

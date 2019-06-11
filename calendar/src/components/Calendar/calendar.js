@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './calendar.css';
 import DaysHeading from '../DaysHeading/daysHeading';
 import Week from '../Week/week';
 
