@@ -2,9 +2,9 @@ import React from 'react';
 
 function date(props){
 	return(
-		<div>
-			{props.datetime}
-		</div>
+		<td>
+			{props.date}
+		</td>
 	)
 }
 

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import Date from '../Date/date';
+import DaysHeading from '../DaysHeading/daysHeading';
+import Week from '../Week/week';
 
 class Calendar extends Component{
 	render() {
 		return (
-			<div>
-				<h1>Calendar</h1>
-				<Date datetime="15"/>
-			</div>
+			<table>
+				<DaysHeading />
+				<Week/>
+			</table>
 		)
 	}
 }
