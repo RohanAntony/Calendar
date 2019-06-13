@@ -1,14 +1,15 @@
-table{
+.calendar{
 	border: 1px solid white;
+	line-height: 3rem;
 }
 
-td, th{
+.date, .day-heading{
 	box-sizing: content-box;
 	padding: 1rem;
 	border: 1px solid white;
 }
 
-th:first-child,
-td:first-child{
+.date:first-child,
+.day-heading:first-child{
 	color: red;
 }

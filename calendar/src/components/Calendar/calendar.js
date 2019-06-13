@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import './calendar.css';
 import DaysHeading from '../DaysHeading/daysHeading';
 import Week from '../Week/week';
 
 class Calendar extends Component{
 	render() {
 		return (
-			<table>
+			<table className="calendar">
 				<DaysHeading />
 				<Week/>
 			</table>

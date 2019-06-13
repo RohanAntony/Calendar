@@ -2,7 +2,7 @@ import React from 'react';
 
 function date(props){
 	return(
-		<td>
+		<td className="date">
 			{props.date}
 		</td>
 	)
