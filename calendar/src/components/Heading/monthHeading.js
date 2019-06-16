@@ -25,9 +25,8 @@ function monthHeading(props){
 
 	return (
 		<tr>
-			<th className="month-heading" colSpan="3">{month}</th>
-			<th className="month-heading" colSpan="2"></th>
-			<th className="month-heading" colSpan="2">{year}</th>
+			<th className="month-heading" colSpan="4">{month}</th>
+			<th className="month-heading" colSpan="3">{year}</th>
 		</tr>
 	)
 }

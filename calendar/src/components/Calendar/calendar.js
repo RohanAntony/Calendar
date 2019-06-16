@@ -6,9 +6,10 @@ class Calendar extends Component{
 
 	constructor(props){
 		super(props)
-		let year = this.props.year, month = this.props.month;
+		let year = parseInt(this.props.year), month = parseInt(this.props.month);
 		let first_date = new Date(year, month, 1)
-		let last_date = new Date(year, month + 1, 0)
+		let last_date = new Date(year, (month+1), 0)
+		console.log(year, month, first_date, last_date)
 		this.state = {
 			month: parseInt(month, 10),
 			year: parseInt(year, 10),
