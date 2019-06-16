@@ -3,11 +3,11 @@ import Week from './week';
 
 function weeks(props){
 
-	console.log(props);
+
 
 	return (
 		<tbody>
-			<Week/>
+			<Week start_day="0" start_date="10" end_date="16"/>
 		</tbody>
 
 	)
