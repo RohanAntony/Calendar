@@ -21,7 +21,7 @@ function weeks(props){
 	return (
 		<tbody>
 			{
-				weeks.map((w, i) => (<Week key={i} child_key={i} start_day={w[0]} start_date={w[1]} end_date={w[2]}/>))
+				weeks.map((w, i) => (<Week key={i} child_key={i} start_day={w[0]} start_date={w[1]} end_date={w[2]} today={props.today}/>))
 			}
 		</tbody>
 

@@ -23,9 +23,9 @@ function week(props){
 		days[i] = { date: j }
 
 	return (
-		<tr>
+		<tr className="week">
 			{
-				days.map((d, i) => (<Date key={i} date={d.date}/>))
+				days.map((d, i) => (<Date key={i} date={d.date} today={ (d.date === props.today) ? true : false }/>))
 			}
 		</tr>
 	)
