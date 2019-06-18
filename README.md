@@ -8,7 +8,7 @@ Implementing a complex component such as calendar using the react framework.
 - `npm start` to serve the files and view the calendar
 
 ### ToDO
-- Add `Month and Year` as additional heading and display the calendar for the month
+- Add option for highlighting current date
 - Make `Month` and `Year` a dropdown allowing it to be changed.
 - Add `Notes` section to the left side.
 - Integrate `Notes` with click of each date.

@@ -51,3 +51,17 @@
 .week:last-child > .date:last-child {
 	border-bottom-right-radius: $border-radius;
 }
+
+.month-heading div{
+	display: flex;
+}
+
+.month-heading a,
+.month-heading a:visited{
+	color: white;
+	flex: 1;
+}
+
+.month-heading a:hover{
+	color: rgba(255, 255, 255, 0.5);
+}

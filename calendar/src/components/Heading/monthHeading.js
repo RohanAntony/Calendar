@@ -25,8 +25,20 @@ function monthHeading(props){
 
 	return (
 		<tr>
-			<th className="month-heading" colSpan="4">{month}</th>
-			<th className="month-heading" colSpan="3">{year}</th>
+			<th className="month-heading" colSpan="4">
+				<div>
+					<a href="" link="" onClick=""><i class="fas fa-chevron-left icon"></i></a>
+					<span>{month}</span>
+					<a href="" link="" onClick=""><i class="fas fa-chevron-right icon"></i></a>
+				</div>
+			</th>
+			<th className="month-heading" colSpan="3">
+				<div>
+					<a href="" link="" onClick=""><i class="fas fa-chevron-left icon"></i></a>
+					<span>{year}</span>
+					<a href="" link="" onClick=""><i class="fas fa-chevron-right icon"></i></a>
+				</div>
+			</th>
 		</tr>
 	)
 }
