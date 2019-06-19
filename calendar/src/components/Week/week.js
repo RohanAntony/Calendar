@@ -3,8 +3,6 @@ import Date from '../Date/date';
 
 function week(props){
 
-	console.log(props)
-
 	//add error condition for checking if the number of days exceeds 7
 	let date_difference = props.end_date - props.start_date + 1;
 	if(date_difference > 7)
