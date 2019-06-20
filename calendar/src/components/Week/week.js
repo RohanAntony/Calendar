@@ -20,10 +20,23 @@ function week(props){
 	for(let j = parseInt(props.start_date); j <= props.end_date; j++, i++)
 		days[i] = { date: j }
 
+	function selected(date){
+		props.selected(date)
+	}
+
 	return (
 		<tr className="week">
 			{
-				days.map((d, i) => (<Date key={i} date={d.date} today={ (d.date === props.today) ? true : false }/>))
+				days.map(
+					(d, i) => (
+						<Date key={i}
+									date={d.date}
+									today={ (d.date === props.today) ? true : false }
+									selected = {selected}
+									selected_date = { props.selected_date === d.date ? true : false}
+									/>
+					)
+				)
 			}
 		</tr>
 	)

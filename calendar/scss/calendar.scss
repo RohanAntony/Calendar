@@ -8,15 +8,14 @@
 	border-radius: $border-radius;
 }
 
-.calendar-mini{
-	width: 10%;
-	height: 10%;
-}
-
 .date, .day-heading, .month-heading{
 	box-sizing: content-box;
 	padding: 1rem;
 	border: 1px solid white;
+}
+
+.date, .day-heading{
+	width: 10rem;
 }
 
 .current-date{
@@ -25,7 +24,7 @@
 
 .date:first-child,
 .day-heading:first-child{
-	color: red;
+	color: $sunday-color;
 }
 
 .month-heading{
@@ -64,4 +63,8 @@
 
 .month-heading a:hover{
 	color: rgba(255, 255, 255, 0.5);
+}
+
+.selected {
+	background-color: rgba(255, 126, 126, 0.2);
 }
