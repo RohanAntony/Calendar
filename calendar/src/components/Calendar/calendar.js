@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import Heading from '../Heading/heading';
 import Weeks from '../Week/weeks';
 
+import GetHolidayList from '../../services/getHolidayList';
+
 class Calendar extends Component{
 
 	constructor(props){
 		super(props)
-		let year = parseInt(this.props.year, 10), month = parseInt(this.props.month, 10);
+		let year = parseInt(this.props.year, 10),
+				month = parseInt(this.props.month, 10);
 		this.state = {
 			month: month,
 			year: year,
@@ -14,8 +17,17 @@ class Calendar extends Component{
 				date: -1,
 				month: -1,
 				year: -1
-			}
+			},
+			year_holiday_list_available: false
 		}
+		this.holiday_list = {}
+		GetHolidayList(year, (data) => {
+			this.holiday_list[year] = data
+			console.log(this.holiday_list[year])
+			this.setState({
+				year_holiday_list_available: true
+			})
+		});
 	}
 
 	changeMonth = val => {
