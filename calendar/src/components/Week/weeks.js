@@ -31,7 +31,8 @@ function weeks(props){
 										end_date={w[2]}
 										today={today}
 										selected = {selected}
-										selected_date = {props.selected_date.month === props.month && props.selected_date.year === props.year ? props.selected_date.date : 0 }/>
+										selected_date = {props.selected_date.month === props.month && props.selected_date.year === props.year ? props.selected_date.date : 0 }
+										holiday_list = {props.holiday_list}/>
 						)
 				)
 			}

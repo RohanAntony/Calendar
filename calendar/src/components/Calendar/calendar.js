@@ -59,6 +59,15 @@ class Calendar extends Component{
 		})
 	}
 
+	holidayListForMonth = (month) => {
+		let list = (
+				this.holiday_list[this.state.year] ?
+				this.holiday_list[this.state.year].filter(holiday => holiday.month === month) :
+				[]
+		)
+		return list
+	}
+
 	render() {
 		return (
 			<table className="calendar">
@@ -70,7 +79,8 @@ class Calendar extends Component{
 				<Weeks month={this.state.month}
 							year={this.state.year}
 							selected_date={this.state.selected_date}
-							selected={this.selected}/>
+							selected={this.selected}
+							holiday_list={this.holidayListForMonth(this.state.month)}/>
 			</table>
 		)
 	}
