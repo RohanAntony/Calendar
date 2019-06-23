@@ -34,6 +34,7 @@ function week(props){
 									today={ (d.date === props.today) ? true : false }
 									selected = {selected}
 									selected_date = { props.selected_date === d.date ? true : false}
+									holiday_list = {props.holiday_list}
 									/>
 					)
 				)

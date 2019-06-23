@@ -20,6 +20,12 @@ function weeks(props){
 		props.selected(date, props.month, props.year)
 	}
 
+	function getHolidayDates(dates){
+		return dates.map(date => date.date)
+	}
+
+	console.log(getHolidayDates(props.holiday_list))
+
 	return (
 		<tbody>
 			{
@@ -32,7 +38,7 @@ function weeks(props){
 										today={today}
 										selected = {selected}
 										selected_date = {props.selected_date.month === props.month && props.selected_date.year === props.year ? props.selected_date.date : 0 }
-										holiday_list = {props.holiday_list}/>
+										holiday_list = {getHolidayDates(props.holiday_list)}/>
 						)
 				)
 			}

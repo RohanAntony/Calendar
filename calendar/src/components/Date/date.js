@@ -10,6 +10,9 @@ function date(props){
 	if(props.selected_date)
 		className += " selected"
 
+	if(props.holiday_list.indexOf(props.date) > -1)
+		className += " holiday"
+
 	function selected(props){
 		if(props.date > 0)
 			props.selected(props.date)
