@@ -40,8 +40,17 @@ class Calendar extends Component{
 
 	changeYear = val => {
 		this.setState( prevState => {
+			let year = (prevState.year + val);
+			GetHolidayList(year, (data) => {
+				this.holiday_list[year] = data
+				console.log(this.holiday_list[year])
+				this.setState({
+					year_holiday_list_available: true
+				})
+			});
 			return {
-				year: (prevState.year + val)
+				year: year,
+				year_holiday_list_available: false
 			}
 		})
 	}
