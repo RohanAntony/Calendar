@@ -13,13 +13,12 @@ html{
 
 body{
 	color: $primary-color;
-	background-color: $background-color;	
+	background-color: $background-color;
 }
 
 .App {
+	display: flex;
   text-align: center;
-}
-
-.App-header {
+	width: 100%;
 	font-size: 3rem;
 }

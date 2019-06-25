@@ -1,5 +1,12 @@
 @use './_variables' as *;
 
+.calendar-outer{
+	display: inline-block;
+	flex: 2;
+	padding: 3rem;
+	margin: 5rem;
+}
+
 .calendar{
 	box-sizing: border-box;
 	border: 1px solid white;

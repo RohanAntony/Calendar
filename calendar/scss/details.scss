@@ -1,0 +1,12 @@
+@use './_variables' as *;
+
+.details{
+	text-align: left;
+	width: 30%;
+	display: inline-block;
+	flex: 1;
+	box-sizing: border-box;
+	margin: 15rem 0;
+	padding: 2rem 2rem;
+	border-left: 1px solid $primary-color;
+}
