@@ -67,12 +67,13 @@ class Calendar extends Component{
 				...selected_date
 			}
 		})
+		this.props.selectedDate(this.holiday_list[year][month][date])
 	}
 
 	holidayListForMonth = (month) => {
 		let list = (
 				this.holiday_list[this.state.year] ?
-				this.holiday_list[this.state.year].filter(holiday => holiday.month === month) :
+				this.holiday_list[this.state.year][this.state.month] :
 				[]
 		)
 		return list

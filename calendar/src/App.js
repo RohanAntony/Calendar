@@ -13,11 +13,24 @@ class App extends Component{
     }
   }
 
+  selectedDate = (date) => {
+    let name = "",
+        description = "";
+    if(date){
+      name = date.name
+      description = date.description
+    }
+    this.setState({
+      holiday_name: name,
+      holiday_description: description
+    })
+  }
+
   render(){
     return (
       <div className="App">
         <div className="calendar-outer">
-          <Calendar month="9" year="2019"/>
+          <Calendar month="9" year="2019" selectedDate={this.selectedDate}/>
         </div>
         <HolidayDetails holiday_name={this.state.holiday_name}
                         holiday_description={this.state.holiday_description}/>
