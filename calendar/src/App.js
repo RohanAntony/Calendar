@@ -9,20 +9,24 @@ class App extends Component{
     super(props)
     this.state = {
       holiday_name: "",
-      holiday_description: ""
+      holiday_description: "",
+      holiday_type: ""
     }
   }
 
   selectedDate = (date) => {
     let name = "",
-        description = "";
+        description = "",
+        type = "";
     if(date){
       name = date.name
       description = date.description
+      type = date.type[0]
     }
     this.setState({
       holiday_name: name,
-      holiday_description: description
+      holiday_description: description,
+      holiday_type: type
     })
   }
 
@@ -33,7 +37,8 @@ class App extends Component{
           <Calendar month="9" year="2019" selectedDate={this.selectedDate}/>
         </div>
         <HolidayDetails holiday_name={this.state.holiday_name}
-                        holiday_description={this.state.holiday_description}/>
+                        holiday_description={this.state.holiday_description}
+                        holiday_type={this.state.holiday_type}/>
       </div>
     )
   }

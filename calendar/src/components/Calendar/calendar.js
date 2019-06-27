@@ -67,7 +67,9 @@ class Calendar extends Component{
 				...selected_date
 			}
 		})
-		this.props.selectedDate(this.holiday_list[year][month][date])
+		let selectedDateObject = this.holiday_list[year] ? this.holiday_list[year][month][date] : undefined
+		console.log(selectedDateObject)
+		this.props.selectedDate(selectedDateObject)
 	}
 
 	holidayListForMonth = (month) => {

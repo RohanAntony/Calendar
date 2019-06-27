@@ -24,8 +24,6 @@ function weeks(props){
 		return dates.map(date => date.date)
 	}
 
-	console.log(getHolidayDates(props.holiday_list))
-
 	return (
 		<tbody>
 			{

@@ -12,7 +12,6 @@ function filterHolidayList(data){
 		newData[month][day] = data[i]
 	}
 
-	console.log(newData);
 	return newData;
 }
 
