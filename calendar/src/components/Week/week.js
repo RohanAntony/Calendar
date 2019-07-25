@@ -20,8 +20,8 @@ function week(props){
 	for(let j = parseInt(props.start_date); j <= props.end_date; j++, i++)
 		days[i] = { date: j }
 
-	function selected(date){
-		props.selected(date)
+	function selectedDateHandler(date){
+		props.selectedDateHandler(date)
 	}
 
 	return (
@@ -32,9 +32,9 @@ function week(props){
 						<Date key={i}
 									date={d.date}
 									today={ (d.date === props.today) ? true : false }
-									selected = {selected}
-									selected_date = { props.selected_date === d.date ? true : false}
-									holiday_list = {props.holiday_list}
+									selectedDateHandler = {selectedDateHandler}
+									isSelectedDate = { props.selectedDateValue === d.date ? true : false}
+									holidayListArray = {props.holidayListArray}
 									/>
 					)
 				)

@@ -7,21 +7,21 @@ function date(props){
 	if(props.today)
 		className += " current-date"
 
-	if(props.selected_date)
+	if(props.isSelectedDate)
 		className += " selected"
 
-	if(props.holiday_list[props.date])
+	if(props.holidayListArray[props.date])
 		className += " holiday"
 
-	function selected(props){
+	function selectedDateHandler(props){
 		if(props.date > 0)
-			props.selected(props.date)
+			props.selectedDateHandler(props.date)
 		else
 			return;
 	}
 
 	return(
-		<td className={className} onClick={ (evt) => selected(props)}>
+		<td className={className} onClick={ (evt) => selectedDateHandler(props)}>
 			{props.date > 0 ? props.date : ""}
 		</td>
 	)

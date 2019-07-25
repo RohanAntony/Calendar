@@ -6,7 +6,11 @@ import MonthHeading from './monthHeading.js';
 function heading(props){
 	return(
 		<thead>
-			<MonthHeading month={props.month} year={props.year} changeMonth={props.changeMonth} changeYear={props.changeYear}/>
+			<MonthHeading
+				month={props.month}
+				year={props.year}
+				changeMonthHandler={props.changeMonthHandler}
+				changeYearHandler={props.changeYearHandler}/>
 			<DaysHeading />
 		</thead>
 	)

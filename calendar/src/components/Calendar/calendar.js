@@ -1,102 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Heading from '../Heading/heading';
 import Weeks from '../Week/weeks';
 
-import GetHolidayList from '../../services/getHolidayList';
+function Calendar(props){
 
-class Calendar extends Component{
+	let year = parseInt(props.year, 10),
+			month = parseInt(props.month, 10);
 
-	constructor(props){
-		super(props)
-		let year = parseInt(this.props.year, 10),
-				month = parseInt(this.props.month, 10);
-		this.state = {
-			month: month,
-			year: year,
-			selected_date: {
-				date: -1,
-				month: -1,
-				year: -1
-			},
-			year_holiday_list_available: false
-		}
-		this.holiday_list = {}
-		GetHolidayList(year, (data) => {
-			this.holiday_list[year] = data
-			console.log(this.holiday_list[year])
-			this.setState({
-				year_holiday_list_available: true
-			})
-		});
-	}
-
-	changeMonth = val => {
-		this.setState( prevState => {
-			return {
-				month: (prevState.month + val) % 12
-			}
-		})
-	}
-
-	changeYear = val => {
-		this.setState( prevState => {
-			let year = (prevState.year + val);
-			if(!this.holiday_list[year])
-				GetHolidayList(year, (data) => {
-					this.holiday_list[year] = data
-					console.log(this.holiday_list[year])
-					this.setState({
-						year_holiday_list_available: true
-					})
-				});
-			return {
-				year: year,
-				year_holiday_list_available: false
-			}
-		})
-	}
-
-	selected = (date, month, year) => {
-		let selected_date = {
-			date: date,
-			month: month,
-			year: year
-		}
-		this.setState({
-			selected_date: {
-				...selected_date
-			}
-		})
-		let selectedDateObject = this.holiday_list[year] ? this.holiday_list[year][month][date] : undefined
-		console.log(selectedDateObject)
-		this.props.selectedDate(selectedDateObject)
-	}
-
-	holidayListForMonth = (month) => {
-		let list = (
-				this.holiday_list[this.state.year] ?
-				this.holiday_list[this.state.year][this.state.month] :
-				[]
-		)
-		return list
-	}
-
-	render() {
-		return (
-			<table className="calendar">
-				<Heading month={this.state.month}
-								year={this.state.year}
-								changeMonth={this.changeMonth}
-								changeYear={this.changeYear}/>
-
-				<Weeks month={this.state.month}
-							year={this.state.year}
-							selected_date={this.state.selected_date}
-							selected={this.selected}
-							holiday_list={this.holidayListForMonth(this.state.month)}/>
-			</table>
-		)
-	}
+	return (
+		<table className="calendar">
+			<Heading
+				month={props.month}
+				year={props.year}
+				changeMonthHandler={props.changeMonthHandler}
+				changeYearHandler={props.changeYearHandler}
+				/>
+			<Weeks
+				month={props.month}
+				year={props.year}
+				selectedDateObject={props.selectedDateObject}
+				selectedDateHandler={props.selectedDateHandler}
+				holidayListArray={props.holidayListArray}/>
+		</table>
+	)
 }
 
 export default Calendar;

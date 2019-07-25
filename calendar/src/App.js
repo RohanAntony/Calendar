@@ -3,42 +3,121 @@ import React, { Component } from 'react';
 import Calendar from './components/Calendar/calendar';
 import HolidayDetails from './components/Details/holidayDetails';
 
+import HolidayList from './services/getHolidayList';
+
 class App extends Component{
 
   constructor(props){
     super(props)
     this.state = {
-      holiday_name: "",
-      holiday_description: "",
-      holiday_type: ""
+      current: {
+        month: 9,
+        year: 2019
+      },
+      selected:{
+        date: -1,
+        month: -1,
+        year: -1
+      },
+      holiday:{
+        name: "",
+        description: "",
+        type: ""
+      },
+      holidayListForYearObject: null
     }
+    this.list = new HolidayList();
+    let year = this.state.current.year;
+    this.list.getHolidayListForYear(year, data => {
+      console.log(data)
+      this.setState({
+        holidayListForYearObject: data
+      })
+    })
   }
 
-  selectedDate = (date) => {
-    let name = "",
-        description = "",
-        type = "";
-    if(date){
-      name = date.name
-      description = date.description
-      type = date.type[0]
-    }
-    this.setState({
-      holiday_name: name,
-      holiday_description: description,
-      holiday_type: type
+  changeMonthHandler = val => {
+    this.setState( prevState => {
+      let year = prevState.current.year;
+      let month = (prevState.current.month + val) % 12;
+      return {
+        current:{
+          year: year,
+          month: month
+        }
+      }
     })
+  }
+
+  changeYearHandler = val => {
+		this.setState( prevState => {
+			let year = (prevState.current.year + val);
+      let month = (prevState.current.month);
+      this.list.getHolidayListForYear(year, data => {
+        this.setState({
+          holidayListForYearObject: data
+        })
+      })
+			return {
+				current:{
+          month: month,
+          year: year
+        },
+				holidayListForYearObject: null
+			}
+		})
+	}
+
+  holidayListForMonth = (month) => {
+		return (
+      this.state.holidayListForYearObject ?
+      this.state.holidayListForYearObject[month] :
+      []
+    )
+	}
+
+  selectedDateHandler = (date, month, year) => {
+    let selected = {
+      date: date,
+      month: month,
+      year: year
+    }
+    let holidayDetailsOfSelectedDate = this.state.holidayListForYearObject[month][date];
+    let holiday = {
+      name: '', description: '', type: ''
+    }
+    if(holidayDetailsOfSelectedDate)
+      holiday = {
+        name: holidayDetailsOfSelectedDate["name"],
+        description: holidayDetailsOfSelectedDate["description"],
+        type: holidayDetailsOfSelectedDate["type"]
+      }
+    this.setState({
+      selected: { ...selected },
+      holiday: { ...holiday }
+    })
+
   }
 
   render(){
     return (
       <div className="App">
         <div className="calendar-outer">
-          <Calendar month="9" year="2019" selectedDate={this.selectedDate}/>
+          <Calendar
+            month={this.state.current.month}
+            year={this.state.current.year}
+            selectedDateHandler={this.selectedDateHandler}
+            changeMonthHandler={this.changeMonthHandler}
+            changeYearHandler={this.changeYearHandler}
+            selectedDateObject={this.state.selected}
+            holidayListArray={this.holidayListForMonth(this.state.current.month)}
+            />
         </div>
-        <HolidayDetails holiday_name={this.state.holiday_name}
-                        holiday_description={this.state.holiday_description}
-                        holiday_type={this.state.holiday_type}/>
+        <HolidayDetails
+          name={this.state.holiday["name"]}
+          description={this.state.holiday["description"]}
+          type={this.state.holiday["type"]}
+          />
       </div>
     )
   }

@@ -16,11 +16,12 @@ function weeks(props){
 		weeks.push([start_day, start_date, end_date])
 	weeks.push([0, end_date - 6, last_date_of_the_month])
 
-	function selected(date){
-		props.selected(date, props.month, props.year)
+	function selectedDateHandler(date){
+		props.selectedDateHandler(date, props.month, props.year)
 	}
 
 	function getHolidayDates(dates){
+		console.log(dates)
 		return dates.map(date => date.date)
 	}
 
@@ -34,9 +35,13 @@ function weeks(props){
 										start_date={w[1]}
 										end_date={w[2]}
 										today={today}
-										selected = {selected}
-										selected_date = {props.selected_date.month === props.month && props.selected_date.year === props.year ? props.selected_date.date : 0 }
-										holiday_list = {getHolidayDates(props.holiday_list)}/>
+										selectedDateHandler = {selectedDateHandler}
+										selectedDateValue = {
+											props.selectedDateObject.month === props.month && props.selectedDateObject.year === props.year ?
+											props.selectedDateObject.date :
+											0
+										}
+										holidayListArray = {getHolidayDates(props.holidayListArray)}/>
 						)
 				)
 			}

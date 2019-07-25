@@ -4,9 +4,9 @@ function details(props){
 
 	return (
 		<div className="details">
-			<h3>{props.holiday_name}</h3>
-			<p>{props.holiday_type}</p>
-			<p>{props.holiday_description}</p>
+			<h3>{props.name}</h3>
+			<p>{props.type}</p>
+			<p>{props.description}</p>
 		</div>
 	)
 }
