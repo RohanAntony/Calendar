@@ -1,6 +1,6 @@
 import React from 'react';
-import Heading from '../Heading/heading';
-import Weeks from '../Week/weeks';
+import Heading from './Heading/heading';
+import Month from './month';
 
 function Calendar(props){
 
@@ -15,7 +15,7 @@ function Calendar(props){
 				changeMonthHandler={props.changeMonthHandler}
 				changeYearHandler={props.changeYearHandler}
 				/>
-			<Weeks
+			<Month
 				month={props.month}
 				year={props.year}
 				selectedDateObject={props.selectedDateObject}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Date from '../Date/date';
+import Date from './date';
 
 function week(props){
 

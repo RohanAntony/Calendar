@@ -1,7 +1,7 @@
 import React from 'react';
 import Week from './week';
 
-function weeks(props){
+function month(props){
 
 	let weeks = []
 
@@ -21,7 +21,6 @@ function weeks(props){
 	}
 
 	function getHolidayDates(dates){
-		console.log(dates)
 		return dates.map(date => date.date)
 	}
 
@@ -50,4 +49,4 @@ function weeks(props){
 	)
 }
 
-export default weeks;
+export default month;
