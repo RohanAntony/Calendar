@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import Calendar from './components/Calendar/calendar';
 import HolidayDetails from './components/Details/holidayDetails';
 
+import Notes from './components/Notes/notes';
+import Note from './components/Notes/note';
+
 import HolidayList from './services/getHolidayList';
 
 class App extends Component{
@@ -102,7 +105,7 @@ class App extends Component{
   render(){
     return (
       <div className="App">
-        <div className="calendar-outer">
+        <div className="calendar-component">
           <Calendar
             month={this.state.current.month}
             year={this.state.current.year}
@@ -112,12 +115,19 @@ class App extends Component{
             selectedDateObject={this.state.selected}
             holidayListArray={this.holidayListForMonth(this.state.current.month)}
             />
+          <HolidayDetails
+            name={this.state.holiday["name"]}
+            description={this.state.holiday["description"]}
+            type={this.state.holiday["type"]}
+            />
         </div>
-        <HolidayDetails
-          name={this.state.holiday["name"]}
-          description={this.state.holiday["description"]}
-          type={this.state.holiday["type"]}
-          />
+        <div className="notes-component">
+          <Notes>
+            <Note content="Note1"/>
+            <Note content="Note2"/>
+            <Note content="Note3"/>
+          </Notes>
+        </div>
       </div>
     )
   }

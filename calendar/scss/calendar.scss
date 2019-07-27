@@ -1,16 +1,15 @@
 @use './_variables' as *;
 
 .calendar-outer{
-	display: inline-block;
-	flex: 2;
-	padding: 3rem;
-	margin: 5rem;
+	flex-basis: 45rem;
+	display: inline;
+	padding: 1rem;
 }
 
 .calendar{
 	box-sizing: border-box;
 	border: 1px solid white;
-	margin: 5rem auto;
+	margin: 1rem auto;
 	line-height: 3rem;
 	border-radius: $border-radius;
 }
