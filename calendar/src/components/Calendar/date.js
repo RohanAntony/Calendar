@@ -13,6 +13,9 @@ function date(props){
 	if(props.holidayListArray[props.date])
 		className += " holiday"
 
+	if(props.date > 0)
+		className += " valid-date"
+
 	function selectedDateHandler(props){
 		if(props.date > 0)
 			props.selectedDateHandler(props.date)

@@ -14,6 +14,23 @@
 
 	.add{
 
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+		border-width: 0;
+
+		font-size: 3rem;
+		line-height: 3rem;
+		color: $primary-color;
+	}
+
+	.add:hover,
+	.add:focus{
+		color: rgba($primary-color, 0.8)
+	}
+
+	.add:active{
+		color: rgba($primary-color, 0.6)
 	}
 }
 
