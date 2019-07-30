@@ -14,6 +14,13 @@ $input_background-color: rgba($primary-color, 0.2);
 	font-size: 3rem;
 	line-height: 3rem;
 
+	.add{
+		display: inline-block;
+		width: 80%;
+		margin: 0 auto;
+		text-align: left;
+	}
+
 	.button{
 
 		box-sizing: border-box;
@@ -28,7 +35,8 @@ $input_background-color: rgba($primary-color, 0.2);
 	}
 
 	.button:hover,
-	.button:focus{
+	.button:focus,
+	.button:visited{
 		color: rgba($primary-color, 0.5)
 	}
 
@@ -54,7 +62,11 @@ $input_background-color: rgba($primary-color, 0.2);
 		flex-direction: row;
 
 		.hidden{
-			display: none;
+			display: none !important;
+		}
+
+		.display{
+			padding: 1rem;
 		}
 
 		.edit{
