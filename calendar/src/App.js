@@ -124,8 +124,6 @@ class App extends Component{
         <div className="notes-component">
           <Notes>
             <Note content="Note1"/>
-            <Note content="Note2"/>
-            <Note content="Note3"/>
           </Notes>
         </div>
       </div>

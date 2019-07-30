@@ -1,5 +1,7 @@
 @use './_variables' as *;
 
+$input_background-color: rgba($primary-color, 0.2);
+
 .notes-component{
 	flex: 1;
 	display: block;
@@ -12,34 +14,74 @@
 	font-size: 3rem;
 	line-height: 3rem;
 
-	.add{
+	.button{
 
 		box-sizing: border-box;
 		margin: 0;
 		padding: 0;
 		border-width: 0;
+		outline: none;
 
-		font-size: 3rem;
-		line-height: 3rem;
-		color: $primary-color;
+		text-decoration: none;
+		color: rgba($primary-color, 0.9);
+		line-height: 5rem;
 	}
 
-	.add:hover,
-	.add:focus{
-		color: rgba($primary-color, 0.8)
+	.button:hover,
+	.button:focus{
+		color: rgba($primary-color, 0.5)
 	}
 
-	.add:active{
-		color: rgba($primary-color, 0.6)
+	.button:active{
+		color: rgba($primary-color, 0.3)
 	}
 }
 
 .note{
+	display: flex;
+	flex-direction: row;
+
 	box-sizing: border-box;
 	width: 80%;
 	margin: 1rem auto;
 	padding: 1rem 0;
-	border-radius: 1rem;
+	border-radius: $border-radius;
 
 	background-color: rgba($primary-color, 0.2);
+
+	.content{
+		flex: 1;
+		flex-direction: row;
+
+		.hidden{
+			display: none;
+		}
+
+		.edit{
+				display: flex;
+		}
+
+		input[type="text"]{
+			flex: 1;
+
+			margin: 0 1rem;
+			padding: 1rem;
+			outline: none;
+			border: 1px solid $input-background-color;
+			border-radius: $border-radius;
+			background-color: $input-background-color;
+
+			font-size: $heading3-font-size;
+			line-height: $heading3-font-size;
+			color: $primary-color;
+		}
+
+		.button{
+			margin-right: 1rem;
+		}
+	}
+
+	.icon{
+		padding-right: 1rem;
+	}
 }

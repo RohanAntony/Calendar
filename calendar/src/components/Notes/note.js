@@ -3,7 +3,15 @@ import React from 'react';
 function note(props){
 	return(
 		<div className="note">
-			{props.content}
+			<div className="content">
+				<div className="edit">
+					<input type="text" value={props.content}/><a href="#" className="button"><i class="fas fa-check-circle"></i></a>
+				</div>
+				<div className="display hidden">
+					{props.content}
+				</div>
+			</div>
+			<a href="#" className="button"><i className="fas fa-minus-circle icon"></i></a>
 		</div>
 	)
 }
