@@ -6,7 +6,8 @@ import HolidayDetails from './components/Details/holidayDetails';
 import Notes from './components/Notes/notes';
 import Note from './components/Notes/note';
 
-import HolidayList from './services/getHolidayList';
+import HolidayList from './services/holidayList';
+import CalendarNotes from './services/calendarNotes';
 
 class App extends Component{
 
@@ -27,12 +28,14 @@ class App extends Component{
         description: "",
         type: ""
       },
-      holidayListForYearObject: null
+      holidayListForYearObject: null,
+      notes:[]
     }
     this.list = new HolidayList();
+    this.notes = new CalendarNotes();
     let year = this.state.current.year;
+    let month = this.state.current.year;
     this.list.getHolidayListForYear(year, data => {
-      console.log(data)
       this.setState({
         holidayListForYearObject: data
       })
@@ -99,7 +102,11 @@ class App extends Component{
       selected: { ...selected },
       holiday: { ...holiday }
     })
-
+    this.notes.getNotesForDate(date, month, year, notes => {
+      this.setState({
+        notes: [...notes]
+      })
+    })
   }
 
   render(){
