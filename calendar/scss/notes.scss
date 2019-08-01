@@ -11,8 +11,8 @@ $input_background-color: rgba($primary-color, 0.2);
 }
 
 .notes{
-	font-size: 3rem;
-	line-height: 3rem;
+	font-size: $heading3-font-size;
+	line-height: $heading3-font-size;
 
 	.add{
 		display: inline-block;
@@ -54,8 +54,9 @@ $input_background-color: rgba($primary-color, 0.2);
 	margin: 1rem auto;
 	padding: 1rem 0;
 	border-radius: $border-radius;
-
 	background-color: rgba($primary-color, 0.2);
+
+	text-align: left;
 
 	.content{
 		flex: 1;

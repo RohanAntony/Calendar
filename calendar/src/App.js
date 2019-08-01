@@ -29,7 +29,7 @@ class App extends Component{
         type: ""
       },
       holidayListForYearObject: null,
-      notes:[]
+      notes:["and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,", "Test2", "Test3"]
     }
     this.list = new HolidayList();
     this.notes = new CalendarNotes();
@@ -129,9 +129,7 @@ class App extends Component{
             />
         </div>
         <div className="notes-component">
-          <Notes>
-            <Note content="Note1"/>
-          </Notes>
+          <Notes notes={this.state.notes}/>
         </div>
       </div>
     )
