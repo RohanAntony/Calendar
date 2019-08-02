@@ -4,3 +4,6 @@ calendar/public/css/
 
 config.json
 keys
+
+migrations
+db.sqlite3
