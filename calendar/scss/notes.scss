@@ -74,8 +74,11 @@ $input_background-color: rgba($primary-color, 0.2);
 				display: flex;
 		}
 
-		input[type="text"]{
+		// input[type="text"]
+		textarea{
 			flex: 1;
+
+			resize: vertical;
 
 			margin: 0 1rem;
 			padding: 1rem;

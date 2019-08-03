@@ -13,15 +13,18 @@ class App extends Component{
 
   constructor(props){
     super(props)
+    let year = parseInt(props.year, 10);
+    let month = parseInt(props.month, 10);
+    let date = parseInt(props.date, 10) + 5;
     this.state = {
       current: {
-        month: 9,
-        year: 2019
+        month: month,
+        year: year
       },
       selected:{
-        date: -1,
-        month: -1,
-        year: -1
+        date: date,
+        month: month,
+        year: year
       },
       holiday:{
         name: "",
@@ -29,12 +32,10 @@ class App extends Component{
         type: ""
       },
       holidayListForYearObject: null,
-      notes:["and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,", "Test2", "Test3"]
+      notes:[]
     }
     this.list = new HolidayList();
     this.notes = new CalendarNotes();
-    let year = this.state.current.year;
-    let month = this.state.current.year;
     this.list.getHolidayListForYear(year, data => {
       this.setState({
         holidayListForYearObject: data
@@ -103,9 +104,24 @@ class App extends Component{
       holiday: { ...holiday }
     })
     this.notes.getNotesForDate(date, month, year, notes => {
-      this.setState({
-        notes: [...notes]
+      let notesObjArray = notes.map(note => {
+        return {
+          editText: note,
+          displayText: note,
+          edit: false
+        }
       })
+      this.setState({
+        notes: [...notesObjArray]
+      })
+    })
+  }
+
+  addNewNoteHandler = () => {
+    this.setState(prevState => {
+      return {
+        notes: [{editText:'', displayText: '', edit: true}, ...prevState.notes]
+      }
     })
   }
 
@@ -129,7 +145,9 @@ class App extends Component{
             />
         </div>
         <div className="notes-component">
-          <Notes notes={this.state.notes}/>
+          <Notes
+            notes={this.state.notes}
+            addNewNoteHandler={this.addNewNoteHandler}/>
         </div>
       </div>
     )
