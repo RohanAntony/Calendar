@@ -120,7 +120,17 @@ class App extends Component{
   addNewNoteHandler = () => {
     this.setState(prevState => {
       return {
-        notes: [{editText:'', displayText: '', edit: true}, ...prevState.notes]
+        notes: [...prevState.notes, {editText:'', displayText: '', edit: true}]
+      }
+    })
+  }
+
+  noteChangeHandler = (content, index) => {
+    this.setState(prevState => {
+      let notes = prevState.notes;
+      notes[index]['editText'] = content;
+      return{
+          notes: [...notes]
       }
     })
   }
@@ -147,7 +157,8 @@ class App extends Component{
         <div className="notes-component">
           <Notes
             notes={this.state.notes}
-            addNewNoteHandler={this.addNewNoteHandler}/>
+            addNewNoteHandler={this.addNewNoteHandler}
+            noteChangeHandler={this.noteChangeHandler}/>
         </div>
       </div>
     )

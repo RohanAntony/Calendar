@@ -3,7 +3,20 @@ import Note from './note';
 
 function notes(props){
 
-	let notes = props.notes.map((note, index) => <Note key={note+(new Date()).toISOString()} content={note.displayText} edit={note.edit}/>)
+	let noteChangeHandler = (evt, index) => {
+		let content = evt.target.value;
+		console.log(content, index)
+		props.noteChangeHandler(content, index)
+	}
+
+	let notes = props.notes.map(
+		(note, index) => <Note
+												index={index}
+												displayText={note.displayText}
+												editText={note.editText}
+												edit={note.edit}
+												noteChangeHandler={noteChangeHandler}/>
+	)
 
 	return (
 		<div className="notes">
