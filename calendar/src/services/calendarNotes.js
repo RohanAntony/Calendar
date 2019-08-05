@@ -25,6 +25,11 @@ class CalendarNotes{
 		cb(this._getNotesForDateOrCreate(date, month, year))
 	}
 
+	propagateNoteChanges = (date, month, year, index, content) => {
+		//Use axios to also send it to backend for update
+		this.calendarNotesObject[year][month][date][index] = content
+	}
+
 }
 
 export default CalendarNotes;

@@ -15,7 +15,10 @@ function notes(props){
 												displayText={note.displayText}
 												editText={note.editText}
 												edit={note.edit}
-												noteChangeHandler={noteChangeHandler}/>
+												noteChangeHandler={noteChangeHandler}
+												saveChangeHandler={props.saveChangeHandler}
+												cancelChangeHandler={props.cancelChangeHandler}
+												deleteNoteHandler={props.deleteNoteHandler}/>
 	)
 
 	return (
