@@ -152,11 +152,34 @@ class App extends Component{
   }
 
   cancelChangeHandler = index => {
-    console.log("cancel", index)
+    this.setState(prevState => {
+      let notes = prevState.notes
+      notes[index]['editText'] = notes[index]['displayText']
+      notes[index]['edit'] = false
+      this.notes.propagateNoteChanges(prevState.selected.date,
+                                      prevState.selected.month,
+                                      prevState.selected.year,
+                                      index,
+                                      notes[index]['editText'])
+      return {
+        notes: [...notes]
+      }
+    })
   }
 
   deleteNoteHandler = index => {
     console.log("delete", index)
+  }
+
+  changeToEditHandler = index => {
+    this.setState(prevState => {
+      let notes = prevState.notes
+      notes[index]['editText'] = notes[index]['displayText']
+      notes[index]['edit'] = true
+      return {
+        notes: [...notes]
+      }
+    })
   }
 
   render(){
@@ -185,7 +208,8 @@ class App extends Component{
             noteChangeHandler={this.noteChangeHandler}
             saveChangeHandler={this.saveChangeHandler}
             cancelChangeHandler={this.cancelChangeHandler}
-            deleteNoteHandler={this.deleteNoteHandler}/>
+            deleteNoteHandler={this.deleteNoteHandler}
+            changeToEditHandler={this.changeToEditHandler}/>
         </div>
       </div>
     )

@@ -18,7 +18,7 @@ function note(props){
 					<a href="#" className="button" onClick={evt => props.saveChangeHandler(props.index)}><i class="fas fa-check-circle"></i></a>
 					<a href="#" className="button" onClick={evt => props.cancelChangeHandler(props.index)}><i class="fas fa-times-circle"></i></a>
 				</div>
-				<div className={displayClasses}>
+				<div className={displayClasses} onClick={evt => props.changeToEditHandler(props.index)}>
 					{props.displayText}
 				</div>
 			</div>

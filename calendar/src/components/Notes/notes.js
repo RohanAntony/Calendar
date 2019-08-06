@@ -18,7 +18,8 @@ function notes(props){
 												noteChangeHandler={noteChangeHandler}
 												saveChangeHandler={props.saveChangeHandler}
 												cancelChangeHandler={props.cancelChangeHandler}
-												deleteNoteHandler={props.deleteNoteHandler}/>
+												deleteNoteHandler={props.deleteNoteHandler}
+												changeToEditHandler={props.changeToEditHandler}/>
 	)
 
 	return (
