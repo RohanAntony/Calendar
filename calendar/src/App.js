@@ -168,7 +168,17 @@ class App extends Component{
   }
 
   deleteNoteHandler = index => {
-    console.log("delete", index)
+    this.setState(prevState => {
+      let notes = prevState.notes
+      notes.splice(index, 1)
+      this.notes.propagateNoteDelete(prevState.selected.date,
+                                      prevState.selected.month,
+                                      prevState.selected.year,
+                                      index)
+      return {
+        notes: [...notes]
+      }
+    })
   }
 
   changeToEditHandler = index => {
