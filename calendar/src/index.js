@@ -4,11 +4,11 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 let today = new Date(),
-		day = today.getDate(),
+		date = today.getDate(),
 		month = today.getMonth(),
 		year = today.getFullYear()
 
-ReactDOM.render(<App day={day} month={month} year={year}/>, document.getElementById('root'));
+ReactDOM.render(<App date={date} month={month} year={year}/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

@@ -14,10 +14,21 @@ $input_background-color: rgba($primary-color, 0.2);
 	font-size: $heading3-font-size;
 	line-height: $heading3-font-size;
 
-	.add{
-		display: inline-block;
+	.heading{
+		display: flex;
 		width: 80%;
 		margin: 0 auto;
+
+		.date-display{
+			flex: 1;
+			line-height: 5rem;
+		}
+
+	}
+
+
+	.add{
+		flex: 4;
 		text-align: left;
 	}
 
@@ -51,10 +62,9 @@ $input_background-color: rgba($primary-color, 0.2);
 
 	box-sizing: border-box;
 	width: 80%;
-	margin: 1rem auto;
+	margin: .5rem auto;
 	padding: 1rem 0;
 	border-radius: $border-radius;
-	background-color: rgba($primary-color, 0.2);
 
 	text-align: left;
 
@@ -68,6 +78,7 @@ $input_background-color: rgba($primary-color, 0.2);
 
 		.display{
 			padding: 1rem;
+			border-bottom: 1px solid black;
 		}
 
 		.edit{

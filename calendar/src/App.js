@@ -15,7 +15,7 @@ class App extends Component{
     super(props)
     let year = parseInt(props.year, 10);
     let month = parseInt(props.month, 10);
-    let date = parseInt(props.date, 10) + 5;
+    let date = parseInt(props.date, 10);
     this.state = {
       current: {
         month: month,
@@ -83,13 +83,25 @@ class App extends Component{
     )
 	}
 
+  holidayListForDate = (month, date) => {
+    return (
+      this.state.holidayListForYearObject ?
+        (
+          this.state.holidayListForYearObject[month] ?
+          this.state.holidayListForYearObject[month][date] :
+          null
+        ) :
+      null
+    )
+  }
+
   selectedDateHandler = (date, month, year) => {
     let selected = {
       date: date,
       month: month,
       year: year
     }
-    let holidayDetailsOfSelectedDate = this.state.holidayListForYearObject[month][date];
+    let holidayDetailsOfSelectedDate = this.holidayListForDate(month, date);
     let holiday = {
       name: '', description: '', type: ''
     }
@@ -213,6 +225,7 @@ class App extends Component{
         </div>
         <div className="notes-component">
           <Notes
+            selectedDateObject={this.state.selected}
             notes={this.state.notes}
             addNewNoteHandler={this.addNewNoteHandler}
             noteChangeHandler={this.noteChangeHandler}

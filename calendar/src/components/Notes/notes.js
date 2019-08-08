@@ -3,6 +3,8 @@ import Note from './note';
 
 function notes(props){
 
+	let date = props.selectedDateObject.date + "/" + (props.selectedDateObject.month + 1) + "/" + props.selectedDateObject.year
+
 	let noteChangeHandler = (evt, index) => {
 		let content = evt.target.value;
 		console.log(content, index)
@@ -24,7 +26,12 @@ function notes(props){
 
 	return (
 		<div className="notes">
-			<a href="#" class="button add" onClick={evt => props.addNewNoteHandler()}><i class="fas fa-plus-circle"></i> Add note</a>
+			<div className="heading">
+				<a href="#" className="button add" onClick={evt => props.addNewNoteHandler()}>
+					<i className="fas fa-plus-circle"></i> Add note
+				</a>
+				<span className="date-display">{date}</span>
+			</div>
 			<div className="note-list">
 				{notes}
 			</div>
