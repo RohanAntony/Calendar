@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 
 import Calendar from './components/Calendar/calendar';
 import HolidayDetails from './components/Details/holidayDetails';
-
 import Notes from './components/Notes/notes';
 import Note from './components/Notes/note';
 
-import HolidayList from './services/holidayList';
+import Login from './components/Defaults/login';
+
 import CalendarNotes from './services/calendarNotes';
+import HolidayList from './services/holidayList';
+import Authenticate from './services/authenticate';
+
 
 class App extends Component{
 
@@ -32,7 +35,8 @@ class App extends Component{
         type: ""
       },
       holidayListForYearObject: null,
-      notes:[]
+      notes:[],
+      authenticate: new Authenticate()
     }
     this.list = new HolidayList();
     this.notes = new CalendarNotes();
@@ -207,32 +211,46 @@ class App extends Component{
   render(){
     return (
       <div className="App">
-        <div className="calendar-component">
-          <Calendar
-            month={this.state.current.month}
-            year={this.state.current.year}
-            selectedDateHandler={this.selectedDateHandler}
-            changeMonthHandler={this.changeMonthHandler}
-            changeYearHandler={this.changeYearHandler}
-            selectedDateObject={this.state.selected}
-            holidayListArray={this.holidayListForMonth(this.state.current.month)}
-            />
-          <HolidayDetails
-            name={this.state.holiday["name"]}
-            description={this.state.holiday["description"]}
-            type={this.state.holiday["type"]}
-            />
-        </div>
-        <div className="notes-component">
-          <Notes
-            selectedDateObject={this.state.selected}
-            notes={this.state.notes}
-            addNewNoteHandler={this.addNewNoteHandler}
-            noteChangeHandler={this.noteChangeHandler}
-            saveChangeHandler={this.saveChangeHandler}
-            cancelChangeHandler={this.cancelChangeHandler}
-            deleteNoteHandler={this.deleteNoteHandler}
-            changeToEditHandler={this.changeToEditHandler}/>
+        <div className="main">
+          {
+            this.state.authenticate.isAuthenticated() ?
+            (
+              <div className="section">
+                <div className="calendar-component">
+                  <Calendar
+                    month={this.state.current.month}
+                    year={this.state.current.year}
+                    selectedDateHandler={this.selectedDateHandler}
+                    changeMonthHandler={this.changeMonthHandler}
+                    changeYearHandler={this.changeYearHandler}
+                    selectedDateObject={this.state.selected}
+                    holidayListArray={this.holidayListForMonth(this.state.current.month)}
+                    />
+                  <HolidayDetails
+                    name={this.state.holiday["name"]}
+                    description={this.state.holiday["description"]}
+                    type={this.state.holiday["type"]}
+                    />
+                </div>
+                <div className="notes-component">
+                  <Notes
+                    selectedDateObject={this.state.selected}
+                    notes={this.state.notes}
+                    addNewNoteHandler={this.addNewNoteHandler}
+                    noteChangeHandler={this.noteChangeHandler}
+                    saveChangeHandler={this.saveChangeHandler}
+                    cancelChangeHandler={this.cancelChangeHandler}
+                    deleteNoteHandler={this.deleteNoteHandler}
+                    changeToEditHandler={this.changeToEditHandler}/>
+                </div>
+              </div>
+            ) :
+            (
+              <div className="section">
+                <Login />
+              </div>
+            )
+          }
         </div>
       </div>
     )

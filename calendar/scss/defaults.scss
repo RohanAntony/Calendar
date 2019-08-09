@@ -1,0 +1,68 @@
+@use './_variables' as *;
+
+$input-background-color: rgba($primary-color, 0.05);
+
+.login{
+	display: flex;
+	flex-direction: column;
+
+	box-sizing: border-box;
+	margin: 10rem auto;
+	width: 30vw;
+
+	font-size: $heading3-font-size;
+	line-height: $heading1-font-size;
+
+	label,
+	input{
+		display: block;
+	}
+
+	label{
+		width: 100%;
+		font-size: $tiny-paragraph-font-size;
+	}
+
+	input{
+		border: 1px solid $input-background-color;
+		border-radius: $border-radius;
+		padding: $border-radius;
+		width: 100%;
+		background-color: $input-background-color;
+
+		font-size: $heading3-font-size;
+		color: $primary-color;
+	}
+
+	.buttons{
+		display: flex;
+		flex-direction: row;
+	}
+
+	button{
+		flex: 1;
+
+		border: 1px solid rgba($primary-color, 0.2);
+		border-radius: $border-radius;
+		padding: $border-radius;
+		margin: 0 $border-radius;
+		background-color: rgba($primary-color, 0.2);
+
+		font-size: $heading3-font-size;
+		color: $primary-color;
+	}
+
+	button:hover{
+		background-color: rgba($primary-color, 0.1);
+	}
+
+	button:active{
+		background-color: rgba($primary-color, 0.05);
+	}
+}
+
+.element{
+	display: inline-block;
+	margin: 1rem 0;
+	text-align: left;
+}
