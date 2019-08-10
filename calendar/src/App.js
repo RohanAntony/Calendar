@@ -6,6 +6,7 @@ import Notes from './components/Notes/notes';
 import Note from './components/Notes/note';
 
 import Login from './components/Defaults/login';
+import Register from './components/Defaults/register';
 
 import CalendarNotes from './services/calendarNotes';
 import HolidayList from './services/holidayList';
@@ -36,7 +37,8 @@ class App extends Component{
       },
       holidayListForYearObject: null,
       notes:[],
-      authenticate: new Authenticate()
+      authenticate: new Authenticate(),
+      displayRegister: false
     }
     this.list = new HolidayList();
     this.notes = new CalendarNotes();
@@ -247,7 +249,13 @@ class App extends Component{
             ) :
             (
               <div className="section">
-                <Login />
+                {
+                  this.state.displayRegister ?
+                  <Register
+                    /> :
+                  <Login
+                    />
+                }
               </div>
             )
           }
