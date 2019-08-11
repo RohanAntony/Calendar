@@ -7,6 +7,7 @@ import Note from './components/Notes/note';
 
 import Login from './components/Defaults/login';
 import Register from './components/Defaults/register';
+import Navbar from './components/Defaults/navbar';
 
 import CalendarNotes from './services/calendarNotes';
 import HolidayList from './services/holidayList';
@@ -211,11 +212,15 @@ class App extends Component{
   }
 
   render(){
+
+    let authenticated = this.state.authenticate.isAuthenticated();
+
     return (
       <div className="App">
+        <Navbar authenticated={authenticated}/>
         <div className="main">
           {
-            this.state.authenticate.isAuthenticated() ?
+            authenticated ?
             (
               <div className="section">
                 <div className="calendar-component">

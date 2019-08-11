@@ -2,6 +2,15 @@
 
 $input-background-color: rgba($primary-color, 0.05);
 
+
+$normal-background-color: rgba($primary-color, 0.2);
+$focused-background-color: rgba($primary-color, 0.1);
+$active-background-color:  rgba($primary-color, 0.05);
+
+$normal-link-color: rgba($primary-color, 0.8);
+$focused-link-color: rgba($primary-color, 0.6);
+$active-background-color:  rgba($primary-color, 0.4);
+
 .login{
 	display: flex;
 	flex-direction: column;
@@ -42,12 +51,12 @@ $input-background-color: rgba($primary-color, 0.05);
 	button{
 		flex: 1;
 
-		border: 1px solid rgba($primary-color, 0.2);
+		border: 1px solid $normal-background-color;
 		outline: 0;
 		border-radius: $border-radius;
 		padding: $border-radius;
 		margin: 0 $border-radius;
-		background-color: rgba($primary-color, 0.2);
+		background-color: $normal-background-color;
 
 		font-size: $heading3-font-size;
 		color: $primary-color;
@@ -56,12 +65,12 @@ $input-background-color: rgba($primary-color, 0.05);
 	button:hover,
 	button:focus,
 	button::-moz-focus-inner{
-		background-color: rgba($primary-color, 0.1);
+		background-color: $focused-background-color;
 		outline: 0;
 	}
 
 	button:active{
-		background-color: rgba($primary-color, 0.05);
+		background-color: $active-background-color;
 		outline: 0;
 	}
 }
@@ -70,4 +79,36 @@ $input-background-color: rgba($primary-color, 0.05);
 	display: inline-block;
 	margin: 1rem 0;
 	text-align: left;
+}
+
+.nav{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	background-color: $input-background-color;
+	text-align:left;
+
+	.brand{
+		flex: 1;
+
+		display: inline-block;
+		padding: 1rem;
+
+		font-weight: 600;
+		font-size: $heading1-font-size;
+		line-height: $heading1-font-size;
+	}
+
+	.logout{
+		padding: 1rem;
+
+		text-decoration: none;
+		font-size: $paragraph-font-size;
+		line-height: $heading1-font-size;
+		color: $normal-link-color;
+	}
+
+	.logout:hover{
+
+	}
 }
