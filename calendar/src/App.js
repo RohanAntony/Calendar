@@ -21,6 +21,7 @@ class App extends Component{
     let year = parseInt(props.year, 10);
     let month = parseInt(props.month, 10);
     let date = parseInt(props.date, 10);
+    this.authenticate = new Authenticate();
     this.state = {
       current: {
         month: month,
@@ -38,8 +39,9 @@ class App extends Component{
       },
       holidayListForYearObject: null,
       notes:[],
-      authenticate: new Authenticate(),
-      displayRegister: false
+      authenticated: this.authenticate.isAuthenticated(),
+      displayRegister: true,
+      displayMessage: ''
     }
     this.list = new HolidayList();
     this.notes = new CalendarNotes();
@@ -211,9 +213,36 @@ class App extends Component{
     })
   }
 
+  toggleRegisterHandler = () => {
+    this.setState(prevState => {
+      return {
+        displayRegister: !prevState.displayRegister,
+        displayMessage: ''
+      }
+    })
+  }
+
+  setMessageHandler = (message) => {
+    this.setState({
+      displayMessage: message
+    })
+  }
+
+  authenticateHandler = (email, password) => {
+    console.log(email, password)
+  }
+
+  registerHandler = (email, password, password2, firstName, cb) => {
+    this.authenticate.register(email, password, password2, firstName, message => {
+      this.setMessageHandler(message)
+      //based on status return error or success
+      cb('error')
+    })
+  }
+
   render(){
 
-    let authenticated = this.state.authenticate.isAuthenticated();
+    let authenticated = this.state.authenticated;
 
     return (
       <div className="App">
@@ -257,9 +286,15 @@ class App extends Component{
                 {
                   this.state.displayRegister ?
                   <Register
-                    /> :
+                    message={this.state.displayMessage}
+                    toggleRegisterHandler={this.toggleRegisterHandler}
+                    registerHandler={this.registerHandler}
+                    setMessageHandler={this.setMessageHandler}/> :
                   <Login
-                    />
+                    message={this.state.displayMessage}
+                    toggleRegisterHandler={this.toggleRegisterHandler}
+                    authenticateHandler={this.authenticateHandler}
+                    setMessageHandler={this.setMessageHandler}/>
                 }
               </div>
             )

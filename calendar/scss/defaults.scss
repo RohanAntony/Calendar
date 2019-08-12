@@ -79,6 +79,13 @@ $active-background-color:  rgba($primary-color, 0.4);
 	display: inline-block;
 	margin: 1rem 0;
 	text-align: left;
+
+	.message{
+		width: 100%;
+		text-align:center;
+		font-size: $paragraph-font-size;
+		line-height: $paragraph-font-size;
+	}
 }
 
 .nav{

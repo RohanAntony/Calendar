@@ -22,9 +22,14 @@ class Authenticate{
 			return false;
 	}
 
-	authenticate = (username, password) => {
+	authenticate = (email, password) => {
 		//Perform an axios operation to authenticate with username and password and store the returned token in local storage
 		this._setUserTokenLocalStorage('TempTokenGeneratedInsertHere');
+	}
+
+	register = (email, password, password2, firstName, cb) => {
+		console.log(email, password, password2, firstName)
+		cb('You have been successfully registered!')
 	}
 
 	logout = () => {
