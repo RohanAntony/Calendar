@@ -6,7 +6,7 @@ function navbar(props){
 			<h1 className="brand">Caliary</h1>
 			{
 				props.authenticated ?
-				<a href="#" className="logout">Logout</a> :
+				<a href="#" className="logout" onClick={props.logoutHandler}>Logout</a> :
 				null
 			}
 		</nav>

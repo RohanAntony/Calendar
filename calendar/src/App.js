@@ -40,7 +40,7 @@ class App extends Component{
       holidayListForYearObject: null,
       notes:[],
       authenticated: this.authenticate.isAuthenticated(),
-      displayRegister: true,
+      displayRegister: false,
       displayMessage: ''
     }
     this.list = new HolidayList();
@@ -213,6 +213,15 @@ class App extends Component{
     })
   }
 
+
+  logoutHandler = () => {
+    this.authenticate.logout(() => {
+      this.setState({
+        authenticated: this.authenticate.isAuthenticated()
+      })
+    })
+  }
+
   toggleRegisterHandler = () => {
     this.setState(prevState => {
       return {
@@ -228,8 +237,16 @@ class App extends Component{
     })
   }
 
-  authenticateHandler = (email, password) => {
-    console.log(email, password)
+  authenticateHandler = (email, password, cb) => {
+    this.authenticate.authenticate(email, password, (message) => {
+      this.setState({
+        authenticated: this.authenticate.isAuthenticated()
+      })
+      if(!this.state.authenticated){
+        this.setMessageHandler(message)
+        cb()
+      }
+    })
   }
 
   registerHandler = (email, password, password2, firstName, cb) => {
@@ -246,7 +263,7 @@ class App extends Component{
 
     return (
       <div className="App">
-        <Navbar authenticated={authenticated}/>
+        <Navbar authenticated={authenticated} logoutHandler={this.logoutHandler}/>
         <div className="main">
           {
             authenticated ?

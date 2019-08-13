@@ -22,9 +22,10 @@ class Authenticate{
 			return false;
 	}
 
-	authenticate = (email, password) => {
+	authenticate = (email, password, cb) => {
 		//Perform an axios operation to authenticate with username and password and store the returned token in local storage
-		this._setUserTokenLocalStorage('TempTokenGeneratedInsertHere');
+		this._setUserTokenToLocalStorage('TestToken');
+		cb('Credentials Error: Please check your password again')
 	}
 
 	register = (email, password, password2, firstName, cb) => {
@@ -32,8 +33,9 @@ class Authenticate{
 		cb('You have been successfully registered!')
 	}
 
-	logout = () => {
+	logout = (cb) => {
 		this._deleteTokenFromLocalStorage();
+		cb()
 	}
 
 	getUserToken = () => {

@@ -1,6 +1,16 @@
 import React from 'react';
 
 function login(props){
+
+	function authenticateHandler(){
+		let email = document.getElementById('username').value,
+				password = document.getElementById('password').value;
+		props.authenticateHandler(email, password, () => {
+			document.getElementById('password').value = ''
+			document.getElementById('username').value = ''
+		})
+	}
+
 	return(
 		<div className="login">
 			<div className="element">
@@ -20,7 +30,7 @@ function login(props){
 			<div className="element buttons">
 				<button href="#"
 								onClick={
-									evt => props.authenticateHandler(document.getElementById('username').value, document.getElementById('password').value)
+									evt => authenticateHandler()
 								}>
 								Login
 				</button>
