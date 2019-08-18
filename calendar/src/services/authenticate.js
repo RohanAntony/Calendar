@@ -1,3 +1,7 @@
+import axios from 'axios';
+import axiosInstance from './requestServices';
+import config from '../config.json';
+
 class Authenticate{
 
 	userToken = "";
@@ -23,14 +27,22 @@ class Authenticate{
 	}
 
 	authenticate = (email, password, cb) => {
-		//Perform an axios operation to authenticate with username and password and store the returned token in local storage
 		this._setUserTokenToLocalStorage('TestToken');
 		cb('Credentials Error: Please check your password again')
 	}
 
 	register = (email, password, password2, firstName, cb) => {
-		console.log(email, password, password2, firstName)
-		cb('You have been successfully registered!')
+		axiosInstance.post('/api/account/register/',{
+			email: email,
+			password: password,
+			first_name: firstName
+		}).then(response => {
+			cb('You have been successfully registered!')
+			console.log(response)
+		}).catch(error => {
+			cb('Error while registering user')
+			console.log(error)
+		})
 	}
 
 	logout = (cb) => {
