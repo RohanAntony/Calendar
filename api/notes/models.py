@@ -1,20 +1,23 @@
 from django.db import models
+from datetime import date
+
+NATIONAL = 'NT'
+OBSERVANCE = 'OB'
+SEASON = 'SE'
+OTHER = 'OT'
+HOLIDAY_TYPES = [
+    (NATIONAL, 'National'),
+    (OBSERVANCE, 'Observance'),
+    (SEASON, 'Season'),
+    (OTHER, 'Other')
+]
+
 
 class Holiday(models.Model):
     """Store the list of holidays for a year"""
-    NATIONAL = 'NT'
-    OBSERVANCE = 'OB'
-    SEASON = 'SE'
-    OTHER = 'OT'
-    HOLIDAY_TYPES = [
-        (NATIONAL, 'National'),
-        (OBSERVANCE, 'Observance'),
-        (SEASON, 'Season'),
-        (OTHER, 'Other')
-    ]
-    year = models.IntegerField()
-    month = models.IntegerField()
-    date = models.IntegerField()
+    year = models.IntegerField(default=date.today().year)
+    month = models.IntegerField(default=date.today().month)
+    date = models.IntegerField(default=date.today().day)
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=200)
     htype = models.CharField(

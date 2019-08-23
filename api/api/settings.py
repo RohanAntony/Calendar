@@ -132,6 +132,8 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'account.CustomAccount'
 
+API_KEY = '63594ae2824df7516dca4e8eee078e0b6d4ea77e'
+
 # CORS_ORIGIN_ALLOW_ALL = True
 
 # CORS_ORIGIN_WHITELIST = [
