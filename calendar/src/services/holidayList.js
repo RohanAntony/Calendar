@@ -27,7 +27,7 @@ class HolidayList {
 			}
 		}).catch(function(error){
 			console.log("Error while fetching data for holiday list for the year " + year)
-			console.log(error)
+			console.log(JSON.stringify(error))
 			cb();
 		})
 	}
