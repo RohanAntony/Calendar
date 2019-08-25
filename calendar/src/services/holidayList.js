@@ -8,23 +8,27 @@ class HolidayList {
 	_filterHolidayList = (data) => {
 		let newData = []
 		for(let i = 0, j = 0; i < data.length; i++, j++){
-			let month = data[i].date.datetime.month - 1,
-					day = data[i].date.datetime.day
+			let month = data[i].month - 1,
+					day = data[i].date
 			if(!newData[month])
-				newData[month] = [,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,]
+				newData[month] = []
 			newData[month][day] = data[i]
 		}
 		return newData;
 	}
 
 	_fetchHolidayList = (year, cb) => {
-		let url = "https://calendarific.com/api/v2/holidays?api_key="+config.api_key+"&country=IN&year=" + year;
+		let url = config.base_url + "api/notes/holidays/" + year + "/";
+		let that = this;
 		axios.get(url).then((response) => {
-			if(response.status === 200)
-				this.holidayListObject[year] = this._filterHolidayList(response.data.response.holidays)
+			if(response.status === 200){				
+				this.holidayListObject[year] = this._filterHolidayList(response.holidays)
 				cb();
+			}
 		}).catch(function(error){
-				console.log(error)
+			console.log("Error while fetching data for holiday list for the year " + year)
+			console.log(error)
+			cb();
 		})
 	}
 

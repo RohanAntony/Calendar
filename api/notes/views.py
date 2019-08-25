@@ -44,7 +44,7 @@ def _saveDataForYearInDB(data):
         obj.save()
     return True
 
-def HolidayListForYearAndMonth(request, year, month):
+def HolidayListForYearAndMonth(request, year):
     """List all holidays for a given year and month as per the request"""
     print("Outside")
     data = _fetchDataForYearFromDB(year)
