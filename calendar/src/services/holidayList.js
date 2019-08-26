@@ -22,10 +22,10 @@ class HolidayList {
 		let that = this;
 		axios.get(url).then((response) => {
 			if(response.status === 200){				
-				this.holidayListObject[year] = this._filterHolidayList(response.holidays)
+				this.holidayListObject[year] = this._filterHolidayList(response.data.holidays)
 				cb();
 			}
-		}).catch(function(error){
+		}).catch((error) => {
 			console.log("Error while fetching data for holiday list for the year " + year)
 			console.log(JSON.stringify(error))
 			cb();
