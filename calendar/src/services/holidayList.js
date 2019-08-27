@@ -19,7 +19,6 @@ class HolidayList {
 
 	_fetchHolidayList = (year, cb) => {
 		let url = config.base_url + "api/notes/holidays/" + year + "/";
-		let that = this;
 		axios.get(url).then((response) => {
 			if(response.status === 200){				
 				this.holidayListObject[year] = this._filterHolidayList(response.data.holidays)
