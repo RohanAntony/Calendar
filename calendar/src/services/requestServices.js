@@ -1,18 +1,21 @@
 import axios from 'axios';
 import config from '../config.json';
 
-function _setToken(token){
+function _setToken(instance, token){
 	instance.defaults.headers.common['Authorization'] = 'Token ' + token;
 }
 
-let _execute = (url, data, method, successCallback, errorCallback, finalBlock) => {
+let _execute = (url, data, method, successCallback, errorCallback, finalBlock, token) => {
 	let instance = axios.create({
 		baseURL: url,
 		data: data,
 		method: method
 	})
 
-	instance = instance.then(successCallback)
+	if(token)
+		_setToken(instance, token)
+
+	instance = instance.request().then(successCallback)
 	instance = instance.catch(errorCallback)
 
 	if(typeof(finalBlock) === "function")

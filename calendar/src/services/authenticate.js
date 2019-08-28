@@ -1,6 +1,4 @@
-import axios from 'axios';
-import axiosInstance from './requestServices';
-import config from '../config.json';
+import { registerUser } from './requestServices';
 
 class Authenticate{
 
@@ -32,14 +30,10 @@ class Authenticate{
 	}
 
 	register = (email, password, password2, firstName, cb) => {
-		axiosInstance.post('/api/account/register/',{
-			email: email,
-			password: password,
-			first_name: firstName
-		}).then(response => {
+		registerUser(email, password, firstName, response => {
 			cb('You have been successfully registered!')
 			console.log(response)
-		}).catch(error => {
+		}, error => {
 			cb('Error while registering user')
 			console.log(error)
 		})
