@@ -5,26 +5,22 @@ function _setToken(instance, token){
 	instance.defaults.headers.common['Authorization'] = 'Token ' + token;
 }
 
-let _execute = (url, data, method, successCallback, errorCallback, finalBlock, token) => {
-	let instance = axios.create({
-		baseURL: url,
-		data: data,
-		method: method
-	})
-
-	if(token)
-		_setToken(instance, token)
-
-	instance = instance.request().then(successCallback)
-	instance = instance.catch(errorCallback)
-
-	if(typeof(finalBlock) === "function")
-		instance = instance.finally(finalBlock)
+let _execute = (url, data, method, successCallback, errorCallback, token) => {
+	if(method === "POST"){
+		axios.post(url, data)
+		.then(successCallback)
+		.catch(errorCallback)
+	}
+	else if(method === "GET"){
+		axios.get(url)
+		.then(successCallback)
+		.catch(errorCallback)
+	}
 }
 
 function getHolidayList(year, successCallback, errorCallback){
 	let url = config.baseURL + "api/notes/holidays/" + year + "/";
-	_execute(url, null, "GET", successCallback, errorCallback)
+	_execute(url, {}, "GET", successCallback, errorCallback)
 }
 
 function registerUser(email, password, firstName, successCallback, errorCallback){
