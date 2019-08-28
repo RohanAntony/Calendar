@@ -19,7 +19,7 @@ let _execute = (url, data, method, successCallback, errorCallback, finalBlock) =
 		instance = instance.finally(finalBlock)
 }
 
-function getHolidayList(successCallback, errorCallback){
+function getHolidayList(year, successCallback, errorCallback){
 	let url = config.baseURL + "api/notes/holidays/" + year + "/";
 	_execute(url, null, "GET", successCallback, errorCallback)
 }
